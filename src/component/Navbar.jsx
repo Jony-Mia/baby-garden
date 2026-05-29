@@ -48,7 +48,7 @@ const Navbars = () => {
                             </li>
                             <li>
                                 <Link href={"/addBaby"} className={`hover:bg-[#FBD683] rounded-2xl ${path === '/registration' ? "border-2 border-[#C6E0EA]" : ""} px-3 py-2 transition-all sm:text-sm`}>
-                                    <i className="fad fa-baby mr-1"></i>
+                                    <i className="fa-duotone fa-solid fa-id-card"></i>
                                     Registration
                                 </Link>
                             </li>
