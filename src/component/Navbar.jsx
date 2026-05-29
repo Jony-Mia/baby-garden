@@ -47,8 +47,8 @@ const Navbars = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link href={"/addBaby"} className={`hover:bg-[#FBD683] rounded-2xl ${path === '/registration' ? "border-2 border-[#C6E0EA]" : ""} px-3 py-2 transition-all sm:text-sm`}>
-                                    <i className="fa-duotone fa-solid fa-id-card"></i>
+                                <Link href={"/registration"} className={`hover:bg-[#FBD683] rounded-2xl ${path === '/registration' ? "border-2 border-[#C6E0EA]" : ""} px-3 py-2 transition-all sm:text-sm`}>
+                                    <i className="fa-duotone fa-solid fa-id-card mr-1"></i>
                                     Registration
                                 </Link>
                             </li>
