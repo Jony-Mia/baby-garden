@@ -19,7 +19,7 @@ const Navbars = () => {
                             <p className="font-bold sm:text-sm">Baby Garden</p>
                         </div>
                     </div>
-                    <div className="shadow-[#C6E0EA] flex items-center justify-center md:max-w-[70%] max-w-[50%] w-[110% rounded-full shadow flex-wrap h-[60px] px-5">
+                    <div className="shadow-[#C6E0EA] flex items-center justify-center md:max-w-[50%] max-w-[50%] rounded-full shadow flex-wrap h-[60px] px-5">
                         {/* <div > */}
                         <ul className="flex flex-wrap items-center gap-1">
                             <li>
@@ -147,7 +147,7 @@ export function MobileMenu() {
                                 </Dropdown.Item>
                                 <Dropdown.Item href={"/addBaby"} className={` w-full rounded-2xl ${path === '/registration' ? "border-2 border-[#C6E0EA]" : ""} px-3 py-2 transition-all`}>
                                     {/* <Link > */}
-                                        <i className="fad fa-baby mr-1"></i>
+                                        <i className="fa-duotone fa-solid fa-id-card"></i>
                                         Registration
                                     {/* </Link> */}
                                 </Dropdown.Item>
