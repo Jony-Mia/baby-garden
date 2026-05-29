@@ -1,5 +1,23 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import Navbars from "@/component/Navbar";
 import "./globals.css";
+import "@/assets/Fontawesome-Pro/fonts/brands.css";
+import "@/assets/Fontawesome-Pro/fonts/fontawesome.css";
+import "@/assets/Fontawesome-Pro/fonts/chisel-regular.css";
+import "@/assets/Fontawesome-Pro/fonts/duotone-light.css";
+import "@/assets/Fontawesome-Pro/fonts/duotone-regular.css";
+import "@/assets/Fontawesome-Pro/fonts/duotone.css";
+import "@/assets/Fontawesome-Pro/fonts/etch-solid.css";
+import "@/assets/Fontawesome-Pro/fonts/graphite.thin.css";
+import "@/assets/Fontawesome-Pro/fonts/regular.css";
+import "@/assets/Fontawesome-Pro/fonts/solid.css";
+import "@/assets/Fontawesome-Pro/fonts/sharp-regular.css";
+import "@/assets/Fontawesome-Pro/fonts/sharp-solid.css";
+import "@/assets/Fontawesome-Pro/fonts/sharp-light.css";
+import "@/assets/Fontawesome-Pro/fonts/sharp-thin.css";
+import "@/assets/Fontawesome-Pro/fonts/light.css";
+import "@/assets/Fontawesome-Pro/fonts/fontawesome.css";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,8 +39,11 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col" suppressHydrationWarning>
+        <Navbars/>
+        {children}</body>
     </html>
   );
 }
