@@ -19,7 +19,7 @@ const Navbars = () => {
                             <p className="font-bold sm:text-sm">Baby Garden</p>
                         </div>
                     </div>
-                    <div className="shadow-[#C6E0EA] flex items-center justify-center md:max-w-[50%] max-w-[50%] rounded-full shadow flex-wrap h-[60px] px-5">
+                    <div className="shadow-[#C6E0EA] bg-white flex items-center justify-center md:max-w-[50%] max-w-[50%] rounded-full shadow flex-wrap h-[60px] px-5">
                         {/* <div > */}
                         <ul className="flex flex-wrap items-center gap-1">
                             <li>
@@ -57,7 +57,7 @@ const Navbars = () => {
                     </div>
                     <div className="md:block hidden">
 
-                        <ul className="flex w-full items-center gap-2 border-[#FBD683] border p-2 rounded-3xl">
+                        <ul className="flex w-full bg-white items-center gap-2 border-[#FBD683] border p-2 rounded-3xl">
                             <li><Link href="/login" className={` rounded-2xl ${path === '/login' ? "border-2 border-[#C6E0EA]" : ""} px-3 py-2 transition-all`}>
                                 <Button className={"bg-[#FBD683] text-black "}>
                                     Login
