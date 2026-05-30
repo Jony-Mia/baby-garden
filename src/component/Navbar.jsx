@@ -3,15 +3,18 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { usePathname } from "next/navigation";
-import { Button, Dropdown, Label } from "@heroui/react";
+import { Button, Dropdown, Label, useTheme } from "@heroui/react";
+import Moon from "@/assets/moon.png";
+import Sun from "@/assets/sun.png";
 
 const Navbars = () => {
     let path = usePathname();
-
-
+    let { resolvedTheme, theme, setTheme } = useTheme()
+    console.log(theme, resolvedTheme)
+    // setTheme("light")
     return (
-        <div>
-            <nav className=" md:block hidden sticky top-0 z-40 w-full border-b border-separator bg-background/70 backdrop-blur-lg">
+        <>
+            <nav suppressHydrationWarning className=" md:block hidden sticky top-0 w-full border-b border-separator bg-background/70 backdrop-blur-lg">
                 <header className="flex h-20 items-center justify-between px-6">
                     <div className="">
                         <div className="flex flex-col items-center">
@@ -19,9 +22,9 @@ const Navbars = () => {
                             <p className="font-bold sm:text-sm">Baby Garden</p>
                         </div>
                     </div>
-                    <div className="shadow-[#C6E0EA] bg-white flex items-center justify-center md:max-w-[50%] max-w-[50%] rounded-full shadow flex-wrap h-[60px] px-5">
+                    <div className="shadow-[#C6E0EA] bg-white dark:text-black flex items-center justify-center md:max-w-[65%] max-w-[50%] rounded-full shadow flex-wrap h-[60px] px-5">
                         {/* <div > */}
-                        <ul className="flex flex-wrap items-center gap-1">
+                        <ul className="flex flex-wrap items-center gap-0">
                             <li>
                                 <Link href="/" className={`hover:bg-[#FBD683] rounded-2xl ${path === '/' ? "border-2 border-[#C6E0EA]" : ""} px-3 py-2 transition-all sm:text-sm`}>
                                     <i className="fad fa-home mr-1"></i>
@@ -52,17 +55,21 @@ const Navbars = () => {
                                     Registration
                                 </Link>
                             </li>
+
                         </ul>
                         {/* </div> */}
                     </div>
                     <div className="md:block hidden">
 
                         <ul className="flex w-full bg-white items-center gap-2 border-[#FBD683] border p-2 rounded-3xl">
-                            <li><Link href="/login" className={` rounded-2xl ${path === '/login' ? "border-2 border-[#C6E0EA]" : ""} px-3 py-2 transition-all`}>
-                                <Button className={"bg-[#FBD683] text-black "}>
-                                    Login
-                                </Button>
-                            </Link></li>
+
+                            <li>
+                                <Link href="/login" className={` rounded-2xl ${path === '/login' ? "border-2 border-[#C6E0EA]" : ""} px-3 py-2 transition-all`}>
+                                    <Button className={"bg-[#FBD683] text-black "}>
+                                        Login
+                                    </Button>
+                                </Link>
+                            </li>
 
                             <li>
                                 <Link href="/sign_up">
@@ -82,12 +89,17 @@ const Navbars = () => {
                             <Dropdown.Popover>
                                 <Dropdown.Menu onAction={(key) => console.log(`Selected: ${key}`)}>
                                     {/* <ul className="flex flex-wrap items-center gap-5"> */}
-                                   
+
                                     <Dropdown.Item href={"/addBaby"} className={`flex w-full rounded-2xl ${path === '/registration' ? "border-2 border-[#C6E0EA]" : ""} px-3 text-sm py-2 transition-all`} >
                                         {/* <Link > */}
-                                            <i className="fad fa-baby mr-1"></i>
-                                            Registration
+                                        <i className="fad fa-baby mr-1"></i>
+                                        Registration
                                         {/* </Link> */}
+                                    </Dropdown.Item>
+                                    <Dropdown.Item>
+                                        <Button variant="outline" onClick={() => setTheme(resolvedTheme === "light" ? "dark" : "light")} className={`border-[#FBD683] border dark:text-black dark:hover:text-white `}>
+                                            <Image width={"20"} alt="Theme toggler" src={theme === "dark" ? Moon : Sun} />
+                                        </Button>
                                     </Dropdown.Item>
                                     {/* </ul> */}
                                 </Dropdown.Menu>
@@ -97,7 +109,7 @@ const Navbars = () => {
                 </header>
             </nav>
             <MobileMenu />
-        </div>
+        </>
     );
 };
 
@@ -105,15 +117,16 @@ export default Navbars;
 
 
 export function MobileMenu() {
+    let { resolvedTheme, theme, setTheme } = useTheme()
+
     let path = usePathname();
 
     return (
         <nav className="md:hidden sticky top-0 z-40 w-full border-b border-separator bg-background/70 backdrop-blur-lg">
             <header className="flex h-16 items-center justify-between px-6">
-                <div>
-                    <Image src={"/baby_logo.png"} width={"45"} height={"45"} alt="logo" />
-                </div>
-                <div>
+                <div className="flex items-center w-full justify-between flex-row-reverse">
+
+
                     <Dropdown>
                         <Button aria-label="Menu" variant="outline">
                             <i className="fa-duotone fa-solid fa-bars"></i>
@@ -123,38 +136,45 @@ export function MobileMenu() {
                                 {/* <ul className="flex flex-wrap items-center gap-5"> */}
                                 <Dropdown.Item href="/" className={` w-full rounded-2xl ${path === '/' ? "border-2 border-[#C6E0EA]" : ""} px-3 py-2 transition-all`}>
                                     {/* <Link > */}
-                                        <i className="fad fa-home mr-1"></i>
-                                        Home
+                                    <i className="fad fa-home mr-1"></i>
+                                    Home
                                     {/* </Link> */}
                                 </Dropdown.Item>
                                 <Dropdown.Item href="/about" className={` w-full rounded-2xl ${path === '/about' ? "border-2 border-[#C6E0EA]" : ""} px-3 py-2 transition-all`}>
                                     {/* <Link > */}
-                                        <i className="fad fa-circle-info mr-1"></i>
-                                        About
+                                    <i className="fad fa-circle-info mr-1"></i>
+                                    About
                                     {/* </Link> */}
                                 </Dropdown.Item>
-                                <Dropdown.Item  href={"/contact"} className={` w-full rounded-2xl ${path === '/contact' ? "border-2 border-[#C6E0EA]" : ""} px-3 py-2 transition-all`}>
+                                <Dropdown.Item href={"/contact"} className={` w-full rounded-2xl ${path === '/contact' ? "border-2 border-[#C6E0EA]" : ""} px-3 py-2 transition-all`}>
                                     {/* <Link> */}
-                                        <i className="fa-duotone fa-thin fa-address-book mr-1"></i>
-                                        Contact
+                                    <i className="fa-duotone fa-thin fa-address-book mr-1"></i>
+                                    Contact
                                     {/* </Link> */}
                                 </Dropdown.Item>
-                                <Dropdown.Item  href={"/babies"} className={`hover:bg-[#fbd583bc]  w-full rounded-2xl ${path === '/babies' ? "border-2 border-[#C6E0EA]" : ""} px-3 py-2 transition-all`}>
+                                <Dropdown.Item href={"/babies"} className={`hover:bg-[#fbd583bc]  w-full rounded-2xl ${path === '/babies' ? "border-2 border-[#C6E0EA]" : ""} px-3 py-2 transition-all`}>
                                     {/* <Link> */}
-                                        <i className="fad fa-baby mr-1"></i>
-                                        Babies
+                                    <i className="fad fa-baby mr-1"></i>
+                                    Babies
                                     {/* </Link> */}
                                 </Dropdown.Item>
                                 <Dropdown.Item href={"/addBaby"} className={` w-full rounded-2xl ${path === '/registration' ? "border-2 border-[#C6E0EA]" : ""} px-3 py-2 transition-all`}>
                                     {/* <Link > */}
-                                        <i className="fa-duotone fa-solid fa-id-card"></i>
-                                        Registration
+                                    <i className="fa-duotone fa-solid fa-id-card"></i>
+                                    Registration
                                     {/* </Link> */}
                                 </Dropdown.Item>
                                 {/* </ul> */}
                             </Dropdown.Menu>
                         </Dropdown.Popover>
                     </Dropdown>
+
+                    <div>
+                        <Image src={"/baby_logo.png"} width={"45"} height={"45"} alt="logo" />
+                    </div>
+                    <Button variant="outline" onClick={() => setTheme(resolvedTheme === "light" ? "dark" : "light")} className={`border-[#FBD683] border dark:text-black dark:hover:text-white `}>
+                        <Image width={"20"} alt="Theme toggler" src={theme === "dark" ? Moon : Sun} />
+                    </Button>
                 </div>
             </header>
 
