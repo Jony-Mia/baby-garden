@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { usePathname } from "next/navigation";
-import { Button, Dropdown, Label, useTheme } from "@heroui/react";
+import { Button, Dropdown, Label, Separator, useTheme } from "@heroui/react";
 import Moon from "@/assets/moon.png";
 import Sun from "@/assets/sun.png";
 
@@ -14,7 +14,7 @@ const Navbars = () => {
     // setTheme("light")
     return (
         <>
-            <nav suppressHydrationWarning className=" md:block hidden sticky top-0 w-full border-b border-separator bg-background/70 backdrop-blur-lg">
+            <nav suppressHydrationWarning className=" md:block hidden sticky z-10 top-0 w-full border-b dark:bg-[#575db099] border-separator bg-background/70 backdrop-blur-lg">
                 <header className="flex h-20 items-center justify-between px-6">
                     <div className="">
                         <div className="flex flex-col items-center">
@@ -24,7 +24,7 @@ const Navbars = () => {
                     </div>
                     <div className="shadow-[#C6E0EA] bg-white dark:text-black flex items-center justify-center md:max-w-[65%] max-w-[50%] rounded-full shadow flex-wrap h-[60px] px-5">
                         {/* <div > */}
-                        <ul className="flex flex-wrap items-center gap-0">
+                        <ul className="flex flex-wrap items-center gap-1">
                             <li>
                                 <Link href="/" className={`hover:bg-[#FBD683] rounded-2xl ${path === '/' ? "border-2 border-[#C6E0EA]" : ""} px-3 py-2 transition-all sm:text-sm`}>
                                     <i className="fad fa-home mr-1"></i>
@@ -62,7 +62,15 @@ const Navbars = () => {
                     <div className="md:block hidden">
 
                         <ul className="flex w-full bg-white items-center gap-2 border-[#FBD683] border p-2 rounded-3xl">
+                            <li>
+                                <Button variant="outline" onClick={() => setTheme(resolvedTheme === "light" ? "dark" : "light")} className={`border-[#FBD683] border dark:text-black dark:hover:text-white `}>
+                                    <Image width={"20"} alt="Theme toggler" src={theme === "dark" ? Moon : Sun} />
+                                </Button>
+                            </li>
+                            <li>
+                                <Separator orientation="vertical" className="h-6"/>
 
+                            </li>
                             <li>
                                 <Link href="/login" className={` rounded-2xl ${path === '/login' ? "border-2 border-[#C6E0EA]" : ""} px-3 py-2 transition-all`}>
                                     <Button className={"bg-[#FBD683] text-black "}>
