@@ -7,16 +7,16 @@ import Image from 'next/image';
 const ChoseUs = () => {
     return (
         <>
-           <h2 className={`text-4xl font-bold my-3 block text-center ${bubblegum_sans.className} `}>Why Choose Baby Garden</h2>
+           <h2 className={`text-4xl font-bold mt-4 mb-2 block text-center ${bubblegum_sans.className} `}>Why Choose Baby Garden</h2>
         <div className=" container mx-auto">
-            <div className='grid lg:grid-cols-2 md:grid-cols-1 grid-cols-1 sm:grid-cols-2 gap-5'>
-                <div className='items-center grid grid-cols-2 container grid-rows-none gap-0 mx-auto '>
+            <div className='grid lg:grid-cols-2 md:grid-cols-1 grid-cols-1 sm:grid-cols-1 gap-5'>
+                <div className='items-center grid grid-cols-2 p-4 container  grid-rows-none gap-0 mx-auto '>
                     <Image src={Faith_1} alt='Faith of mother' width={"390"} className='lg:-mb-8 cols-span-2' />
                     <Image src={Faith_3} alt='Faith of mother' width={"390"} className='lg:-mb-8 cols-span-2' />
                     <Image src={Faith_2} alt='Faith of mother' width={"390"} className='cols-span-2' />
                     <Image src={Faith_4} alt='Faith of mother' width={"390"} className='cols-span-2' />
                 </div> 
-                <div className='flex flex-col items-center'>
+                <div className='lg:grid-cols-1 md:grid-cols-1 grid grid-cols-2 gap-2 justify-center w-full items-center'>
                  
                     <Horizontal
                      title={"Simple and Flexible"} 
@@ -53,7 +53,7 @@ import { bubblegum_sans } from '@/app/layout';
 
 export function Horizontal({title, description}) {
   return (
-    <Card className=" items-stretch  md:flex-row w-[85%] mb-8">
+    <Card className=" items-stretch flex-col text-left  md:flex-row  mb-8 shadow-[#3c83f68e] shadow">
       <div className="relative flex justify-center items-center p-3 overflow-hidden rounded-2xl ">
        <i className="fa-duotone fa-regular fa-2x sm:fa-2x md:fa-3x fa-shield-check"></i>
       </div>
@@ -63,15 +63,7 @@ export function Horizontal({title, description}) {
           <Card.Description className='text-wrap'>
             {description}
           </Card.Description>
-          {/* <CloseButton aria-label="Close banner" className="absolute top-3 right-3" /> */}
         </Card.Header>
-        {/* <Card.Footer className="mt-auto flex w-full flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex flex-col">
-            <span className="text-sm font-medium text-foreground">Only 10 spots</span>
-            <span className="text-xs text-muted">Submission ends Oct 10.</span>
-          </div>
-          <Button className="w-full sm:w-auto">Apply Now</Button>
-        </Card.Footer> */}
       </div>
     </Card>
   );
